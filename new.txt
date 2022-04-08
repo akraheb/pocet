@@ -1,0 +1,2 @@
+"    DATUM    |  CAS  | pocet | 5m | 15m | mimo | empty | first | sezonka | final |"
+"03. 04. 2022 | 15:35 | 107 | 11 | 15 | 53 | 6 | 0 | 56 | 101 |-|  4 | 4 | 4 | 5 | 30 | 23 | 16 | 21 | "

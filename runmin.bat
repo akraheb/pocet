@@ -1,0 +1,1 @@
+start /min <C:\temp\pocet.bat>

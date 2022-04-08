@@ -1,0 +1,132 @@
+	if (!count!%%1000)==0 (
+		echo !count! - %time%)¸
+
+
+(
+				set row3=!output[%%i]:~15,1!
+				) else 
+				(
+				set row3=!output[%%i]:~14,2!
+				)
+				if !row3! GEQ 8 
+				(
+				set /a pocet=!pocet!+1
+				)
+
+For /L %%i in (1,1,%Count%) Do (
+	set row=!output[%%i]:~0,12!
+	set row2=!output[%%i]:~14,1!
+	if !now!==!row! (
+			if !row2!==0
+				(
+				set row3=!output[%%i]:~15,1!
+				) else 
+				(
+				set row3=!output[%%i]:~14,2!
+				)
+				if !row3! GEQ 8 
+				(
+				set /a pocet=!pocet!+1
+				) 
+	 		)
+)
+
+	if !rool!==\  (
+			echo -
+			rool=-
+		      )
+	if !rool!==-  (
+			echo /
+			rool=/
+		      )
+	if !rool!==/  (
+			echo |
+			rool=|
+		      )
+	if !rool!==|  (
+			echo \
+			rool=\
+		      )
+
+GEQ"8:00"
+
+For /L %%i in (1,1,%Count%) Do (
+  set row=!output[%%i]:~0,12!
+  set row2=!output[%%i]:~0,19!
+::Call :Action_hour "!row!" "!now!"
+echo %row
+echo %now
+if %1==%2 (
+echo ano
+) else (
+echo nie
+)
+
+echo !pocet!
+pause
+Exit
+
+:Action_hour
+if %1==%2 (
+echo ano
+) else (
+echo nie
+)
+
+For /L %%i in (1,1,%Count%) Do (
+ set row=!output[%%i]!
+ set row2=!row:~0,19!
+ echo !row2!
+)
+
+@echo off
+set "File=C:\filename.txt"
+set /a count=0
+set row = !output[%%i]!
+
+SETLOCAL enabledelayedexpansion
+for /F "tokens=* delims=" %%a in ('Type "%File%"') do (
+         Set /a count+=1
+         Set "output[!count!]=%%a"     
+)
+
+For /L %%i in (1,1,%Count%) Do (
+ Call :Action "!output[%%i]!"
+ pause
+)
+
+Exit
+
+:Action
+echo We treat this line : %1
+exit /b
+
+set "File=c:\temp\test2.txt"
+set /a count=0
+set /a l=0
+SETLOCAL enabledelayedexpansion
+for /F "tokens=* delims=" %%a in ('Type "%File%"') do (
+         Set /a count+=1
+         Set "output[!count!]=%%a"     
+)
+
+For /L %%i in (1,1,%Count%) Do (
+ Call :Action "!output[%%i]!"
+ pause
+)
+
+Exit
+::*******************************************************
+:Action
+IF /I =="hello, world!" (echo %1 , %l+1
+    ECHO found
+)
+
+exit /b
+
+set str = Helloworld 
+echo %str%
+
+set str = %str:~5,10% 
+echo %str%!temp!
+!temp!
