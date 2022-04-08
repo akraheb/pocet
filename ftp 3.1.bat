@@ -1,0 +1,3 @@
+ftp
+dir
+pause
